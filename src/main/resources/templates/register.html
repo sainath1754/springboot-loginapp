@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 { text-align: center; margin-bottom: 1.5rem; color: #333; }
+        input {
+            width: 100%; padding: 0.75rem 1rem;
+            border: 1.5px solid #ddd; border-radius: 8px;
+            font-size: 1rem; margin-bottom: 1rem;
+        }
+        input:focus { outline: none; border-color: #059669; }
+        button {
+            width: 100%; padding: 0.75rem;
+            background: #059669; color: white;
+            border: none; border-radius: 8px;
+            font-size: 1rem; cursor: pointer;
+        }
+        button:hover { background: #047857; }
+        .msg-error { color: #e53e3e; text-align: center; margin-bottom: 1rem; }
+        .link { text-align: center; margin-top: 1rem; }
+        .link a { color: #059669; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <h2>📝 Register</h2>
+
+    <!-- Show error if username taken -->
+    <p th:if="${error}" th:text="${error}" class="msg-error"></p>
+
+    <form th:action="@{/register}" method="post">
+        <input type="text"     name="username" placeholder="Choose a Username" required />
+        <input type="password" name="password" placeholder="Choose a Password" required />
+        <button type="submit">Create Account</button>
+    </form>
+
+    <div class="link">
+        <p>Already have an account? <a href="/login">Login here</a></p>
+    </div>
+</div>
+</body>
+</html>
